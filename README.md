@@ -1,12 +1,18 @@
+# android
 
-Make andoid apk from linux command line
+Forked from: [https://github.com/mojtabamarashee/android](https://github.com/mojtabamarashee/android)
 
-<a href="https://medium.com/@authmane512/how-to-build-an-apk-from-command-line-without-ide-7260e1e22676"> This webcast goes through this example code </a>
-<br>
-<br>
-<br>
+## Requirement
 
-Edit "AAPT, DX, ZIPALIGN, APKSIGNER, PLATFORM" variables according to android-sdk  installation path  in make.sh file
+- Linux
 
+  Install Android SDK, try command below if your distro is supporting, else do install manually.
+  ```
+  sudo apt install android-sdk
+  ```
 
-<br><strong>./make.sh</storng>
+## Build
+
+1. Create a keystore file by execute `keystore.sh` then insert your password.
+2. Edit `build.sh` then change `KEYSTORE_PASS`, `SDK_DIR`, `BUILD_TOOLS` variable, adjust with your current environment.
+3. Execute `build.sh`, if no error this will build an apk file in `bin` folder named `hello.apk`.
