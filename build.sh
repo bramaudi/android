@@ -2,11 +2,13 @@
 
 set -e
 
+KEYSTORE_PASS="debugapp"
 SDK_DIR="/usr/lib/android-sdk"
-AAPT="$SDK_DIR/build-tools/27.0.1/aapt"
-DX="$SDK_DIR/build-tools/27.0.1/dx"
-ZIPALIGN="$SDK_DIR/build-tools/27.0.1/zipalign"
-APKSIGNER="apksigner" # /!\ version 26
+BUILD_TOOLS="$SDK_DIR/build-tools/27.0.1"
+
+AAPT="$BUILD_TOOLS/aapt"
+DX="$BUILD_TOOLS/dx"
+ZIPALIGN="$BUILD_TOOLS/zipalign"
 PLATFORM="$SDK_DIR/platforms/android-23/android.jar"
 
 echo "Cleaning..."
@@ -30,5 +32,5 @@ $AAPT add bin/hello.unaligned.apk classes.dex
 
 echo "Signing and aligning APK..."
 # Change -storepass with the keystore pass
-jarsigner -keystore debugapp.keystore -storepass 'debugapp' bin/hello.unaligned.apk debugapp
+jarsigner -keystore debugapp.keystore -storepass $KEYSTORE_PASS bin/hello.unaligned.apk debugapp
 $ZIPALIGN -f 4 bin/hello.unaligned.apk bin/hello.apk
