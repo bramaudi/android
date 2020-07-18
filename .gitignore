@@ -1,0 +1,5 @@
+bin/*
+obj/*
+src/com/example/helloandroid/R.java
+classes.dex
+*.keystore
