@@ -28,9 +28,6 @@ echo "Making APK..."
 $AAPT package -f -m -F bin/hello.unaligned.apk -M AndroidManifest.xml -S res -I $PLATFORM
 $AAPT add bin/hello.unaligned.apk classes.dex
 
-echo "Create debug keystore..."
-keytool -genkey -v -keystore debugapp.keystore -alias debugapp -keyalg RSA -keysize 2048 -validity 10000
-
 echo "Signing and aligning APK..."
 # Change -storepass with the keystore pass
 jarsigner -keystore debugapp.keystore -storepass 'debugapp' bin/hello.unaligned.apk debugapp
